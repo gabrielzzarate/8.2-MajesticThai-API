@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+
 
 # MajesticThai
 
@@ -7,10 +7,11 @@ MajesticThai is a simple API allowing customers to view our menu and order throu
 
 ## Menu Collection [/menu]
 
-### List All Menu Items [GET]
+### List Menu [GET]
 
-+ Response 200 (application/menu)
++ Response 200 (application/json)
 
+        {
         [
             {
                 "menu": "Majestic Thai Menu",
@@ -21,7 +22,7 @@ MajesticThai is a simple API allowing customers to view our menu and order throu
                         "description": "fresh spring roll with bean sauce.",
                         "price": 4.50,
                         "category": "appetizers",
-                        "review": "Delicious!"
+                        
                     }, {
                         "title": "Grilled Chicken Satay",
                         "description": "on skewers, coconut milk-turmeric, peanut sauce",
@@ -127,15 +128,20 @@ MajesticThai is a simple API allowing customers to view our menu and order throu
                     }
                 ]
             }
-        ]
 
-### Get an individual menu item [POST]
+
+## Menu Item [/menu/{title}]
+
+
+### Get an individual menu item [GET]
 
 You may get an individual meni item using this action. It takes a JSON
 object containing a menu item.
 
-+ Request (application/{title})
 
++ Response 200 (application/json)
+
+    
         {
                        "title": "Summer Roll",
                         "description": "fresh spring roll with bean sauce.",
@@ -143,31 +149,59 @@ object containing a menu item.
                         "category": "appetizers",
                         "review": "Delicious!"
                     },
+        
 
-+ Response 201 (application/json)
+## Order Listing [/orders]
 
-    + Headers
 
-            Location: /questions/2
+### Get a listing of orders  [GET]
 
-    + Body
+Each order should return as an object with the order's id, username, time, total, and array of ordered items
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
+
++ Response 200 (application/json)
+
+         "orders":       [
                     {
-                        "choice": "Swift",
-                        "votes": 0
+                        "id": 1,
+                        "username": "DanDude",
+                        "time": 11:45,
+                        "total": 23.45,
+                        "estimated-completion": 15
+                        "ordered": [ 
+                                { 
+                                "title": "Grilled Chicken Satay",
+                                "description": "on skewers, coconut milk-turmeric, peanut sauce",
+                                "price": 8.00,
+                                "category": "appetizers"
+                                }, {
+                                "title": "Grilled Chicken Satay",
+                                "description": "on skewers, coconut milk-turmeric, peanut sauce",
+                                "price": 8.00,
+                                "category": "appetizers"
+                                
+                                } ]
+                        
                     }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
+                        "id": 2,
+                        "username": "GabeDude",
+                        "time": 12:45,
+                        "total": 18.45,
+                        "estimated-completion": 20,
+                        "ordered": [ 
+                                { 
+                                "title": "Grilled Chicken Satay",
+                                "description": "on skewers, coconut milk-turmeric, peanut sauce",
+                                "price": 8.00,
+                                "category": "appetizers"
+                                }, {
+                                "title": "Grilled Chicken Satay",
+                                "description": "on skewers, coconut milk-turmeric, peanut sauce",
+                                "price": 8.00,
+                                "category": "appetizers"
+                                
+                                } ]
+                        
                     }
+                    
                 ]
-            }
