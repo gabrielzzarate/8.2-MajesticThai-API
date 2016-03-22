@@ -1,0 +1,10 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# MajesticThai
+
+MajesticThai is a simple API allowing customers to view our menu and order through the Majestic Thai website.
+
+## Menu Collection [/menu]
+
+### List All Menu Items [GET]
