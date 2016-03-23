@@ -205,3 +205,37 @@ Each order should return as an object with the order's id, username, time, total
                     }
                     
                 ]
+## a new order posted [orders/{customername}]
+
+### Post a new Order [POST]
+
++ Request (application/json)
+
+    "order": [
+
+        [
+          "customername": {
+            "id": "4122009837458990",
+            "delivery": "false",
+            "email": "danimals@gmail.com",
+            "name": "BlackBeard",
+            "totalPrice": 57.89
+          },
+          "ordered": [
+            {
+            "description": "a delicious snack",
+            "category": "entrees",
+            "title": "Shrimp Po Boys",
+            "price": 15.05,
+            },{
+            "category": "side orders",
+            "description": "a diet coke",
+            "title": "coke"
+            "price": 100.99
+            }, {
+            "category": "popular items",
+            "description": "a popular dish.",
+            "dish": "Lucky Charms",
+            "price": 5.95
+        }
+        ]
